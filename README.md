@@ -36,20 +36,20 @@ Install dependancies that will create an environment for the app to run
 #### Create Database
 ```
 $ psql
-CREATE DATABASE lesawards
+CREATE DATABASE the
 ```
 #### .env file
 Create .env file and paste paste the following filling where appropriate:
 
 SECRET_KEY = '<Secret_key>'<br>
-DBNAME = 'lesawards'<br>
+DBNAME = 'the'<br>
 USER = '&lt;Username&gt;'<br>
 PASSWORD = '&lt;password&gt;'<br>
 DEBUG = True 
 
  #### Run initial Migrations
 ```
-$ python manage.py makemigrations lewawards
+$ python manage.py makemigrations theNeighborhood
 $ python3.6 manage.py migrate
 ```
 
@@ -61,7 +61,7 @@ $ python3.6 manage.py runserver
 ## Running the tests
 
 ```
-$ python3.6 manage.py test lewawards
+$ python3.6 manage.py test theNeighborhood
 ```
 
 
