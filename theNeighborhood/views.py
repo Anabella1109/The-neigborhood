@@ -3,6 +3,6 @@ from django.http  import HttpResponse,Http404,HttpResponseRedirect
 
 
 def home(request):
-    return render(request,'home.html')
+    return render(request,'home/home.html')
 
 # Create your views here.
