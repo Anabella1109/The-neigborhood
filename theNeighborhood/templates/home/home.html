@@ -1,0 +1,31 @@
+{%extends 'home/base.html'%}
+
+{% block content %}
+{{block.super}}
+
+
+<div id="top">
+<h1 class="text-center">WELCOME</h1>
+<h2 class="text-center">to <span> the</span></h2>
+</div>
+
+ <!-- {%for proj in projects %}
+
+   <div class="col-md-3" >
+     <div class="panel hh">
+    <div style="padding:4px;">
+   <p class="panel panel-heading">{{proj.name}}</p>
+   <div class="panel panel-body">
+  <a href="/project/{{proj.id}}" > <img src="{{proj.screenshot.url}}" alt="" height="250" id="img" ></a>
+   <p>{{proj.description}}</p>
+  </div>
+   <a href="/grade/{{proj.id}}" class="panel panel-footer"> <button>Grade</button> </a>
+  </div>
+  </div>
+</div>
+
+ {%endfor%} -->
+
+
+{% endblock %}
+
