@@ -8,6 +8,9 @@ class Neighborhood(models.Model):
      location = models.CharField(max_length=100, null=True)
      occupants=models.IntegerField()
 
+     def __str__(self):
+        return self.name
+
 
 # class User(models.Model):
 #     full_name=models.CharField(max_length=150,null=True)
@@ -24,6 +27,9 @@ class Profile(models.Model):
     last_name=models.CharField(max_length=100,null=True)
     phone_number=models.IntegerField(null=True)
 
+    def __str__(self):
+        return self.first_name
+
 @receiver(post_save, sender=User)
 def update_user_profile(sender, instance, created, **kwargs):
     if created:
@@ -38,12 +44,18 @@ class Business(models.Model):
      email = models.EmailField()
      phone_number=models.IntegerField(null=True)
 
+     def __str__(self):
+        return self.name
+
 class Health(models.Model):
     name=models.CharField(max_length=100,null=True)
     location=models.CharField(max_length=200,null=True)
     neighborhood=models.OneToOneField(Neighborhood,null=True)
     phone_number=models.IntegerField(null=True)
     email = models.EmailField()
+
+    def __str__(self):
+        return self.name
 
 class Police(models.Model):
     name=models.CharField(max_length=100,null=True)
@@ -52,6 +64,9 @@ class Police(models.Model):
     phone_number=models.IntegerField(null=True)
     email = models.EmailField()
 
+    def __str__(self):
+        return self.name
+
 class Post(models.Model):
     title=models.CharField(max_length=100,null=True)
     image=models.ImageField(upload_to = 'images/')
@@ -59,6 +74,9 @@ class Post(models.Model):
     pub_date = models.DateTimeField(auto_now_add=True)
     profile=models.ForeignKey(Profile, null=True)
     user=models.ForeignKey(User,on_delete=models.CASCADE,null=True)
+
+    def __str__(self):
+        return self.title
 
 
      
