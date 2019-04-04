@@ -3,6 +3,12 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from tinymce.models import HTMLField
 
+class Neighborhood(models.Model):
+     name = models.CharField(max_length=100, null=True)
+     location = models.CharField(max_length=100, null=True)
+     occupants=models.IntegerField()
+
+
 class User(models.Model):
     full_name=models.CharField(max_length=150,null=True)
     username=models.CharField(max_length=100,null=True)
