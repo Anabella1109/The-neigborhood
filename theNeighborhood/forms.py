@@ -1,5 +1,6 @@
 from django.contrib.auth.forms import UserCreationForm
 from .models import User,Profile
+from django import forms
  
 class SignUpForm(UserCreationForm):
     class Meta:

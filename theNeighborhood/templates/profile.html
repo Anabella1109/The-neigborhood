@@ -1,0 +1,48 @@
+{%extends 'home/base.html'%}
+
+
+ {% block content %}
+ {{block.super}}
+ <div class="container">
+
+<div class="col-md-6">
+  <img src="{{profile.photo.url}}" alt="" height='200' width='100' id='dp'>
+ </div>
+ <div class="col-md-6">
+   <div class="row">
+    <p>First name:{{user.profile.first_name}}</p>
+    <p>Last name:{{user.profile.last_name}}</p>
+    <p>Phone number:0{{user.profile.phone_number}}</p>
+    <p>Email:{{user.email}}</p>
+<p>Bio:{{user.profile.bio}}</p>
+<!-- <div class="row">
+<p class='col-md-4'>Added:{{projects|length}} projects</p>
+
+</div> -->
+
+
+
+   
+ 
+</div>
+
+ <!-- {%for proj in projects %}
+
+    <div class="" >
+      <div class="panel">
+     <div>
+    <p class="panel panel-heading">{{proj.name}}</p>
+    <div class="panel panel-body">
+   <a href="/project/{{proj.id}}" > <img src="{{proj.screenshot.url}}" alt="" height="250" id="img" ></a>
+    <p>{{proj.description}}</p>
+   </div>
+    <a href="/grade/{{proj.id}}" class="panel panel-footer"> <button>Grade</button> </a>
+   </div>
+   </div>
+ </div>
+ {%empty%}
+ <h2>No projects yet</h2>
+ 
+  {%endfor%} -->
+</div>
+ {% endblock %}
