@@ -9,12 +9,12 @@ class Neighborhood(models.Model):
      occupants=models.IntegerField()
 
 
-class User(models.Model):
-    full_name=models.CharField(max_length=150,null=True)
-    username=models.CharField(max_length=100,null=True)
-    email = models.EmailField()
-    password=models.CharField(max_length=50)
-    neighborhood=models.ForeignKey(Neighborhood)
+# class User(models.Model):
+#     full_name=models.CharField(max_length=150,null=True)
+#     username=models.CharField(max_length=100,null=True)
+#     email = models.EmailField()
+#     password=models.CharField(max_length=50)
+#     neighborhood=models.ForeignKey(Neighborhood)
 
 class Profile(models.Model):
     photo=models.ImageField(upload_to='images/',default='images/avatar.jpg')
