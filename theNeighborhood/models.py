@@ -1,6 +1,14 @@
 from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from tinymce.models import HTMLField
+
+class User(models.Model):
+    full_name=models.CharField(max_length=150,null=True)
+    username=models.CharField(max_length=100,null=True)
+    email = models.EmailField()
+    password=models.CharField(max_length=50)
+    neighborhood=models.ForeignKey(Neighborhood)
 
 class Profile(models.Model):
     photo=models.ImageField(upload_to='images/',default='images/avatar.jpg')
@@ -33,7 +41,7 @@ class Police(models.Model):
     email = models.EmailField()
 
 class Post(models.Model):
-    name=models.CharField(max_length=100,null=True)
+    title=models.CharField(max_length=100,null=True)
     image=models.ImageField(upload_to = 'images/')
     caption=HTMLField()
     pub_date = models.DateTimeField(auto_now_add=True)
