@@ -19,16 +19,22 @@ class User(models.Model):
 class Profile(models.Model):
     photo=models.ImageField(upload_to='images/',default='images/avatar.jpg')
     bio=models.TextField()
-    # user=models.OneToOneField(User,on_delete=models.CASCADE,null=True)
+    user=models.OneToOneField(User,on_delete=models.CASCADE,null=True)
     first_name=models.CharField(max_length=100,null=True)
     last_name=models.CharField(max_length=100,null=True)
     phone_number=models.IntegerField(null=True)
+
+@receiver(post_save, sender=User)
+def update_user_profile(sender, instance, created, **kwargs):
+    if created:
+        Profile.objects.create(user=instance)
+    instance.profile.save()
     
 class Business(models.Model):
      name=models.CharField(max_length=100,null=True)
      location=models.CharField(max_length=200,null=True)
      neighborhood=models.OneToOneField(Neighborhood,null=True)
-    #  user=models.OneToOneField(User,on_delete=models.CASCADE,null=True)
+     user=models.OneToOneField(User,on_delete=models.CASCADE,null=True)
      email = models.EmailField()
      phone_number=models.IntegerField(null=True)
 
@@ -52,7 +58,7 @@ class Post(models.Model):
     caption=HTMLField()
     pub_date = models.DateTimeField(auto_now_add=True)
     profile=models.ForeignKey(Profile, null=True)
-    # user=models.ForeignKey(User,on_delete=models.CASCADE,null=True)
+    user=models.ForeignKey(User,on_delete=models.CASCADE,null=True)
 
 
      
