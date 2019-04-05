@@ -26,6 +26,7 @@ def edit_profile(request,edit):
             profile.first_name = form.cleaned_data['first_name']
             profile.last_name = form.cleaned_data['last_name']
             profile.phone_number = form.cleaned_data['phone_number']
+            profile.neighborhood = form.cleaned_data['neigborhood']
             profile.user=current_user
 
             

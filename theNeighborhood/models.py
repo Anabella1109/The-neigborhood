@@ -26,6 +26,8 @@ class Profile(models.Model):
     first_name=models.CharField(max_length=100,null=True)
     last_name=models.CharField(max_length=100,null=True)
     phone_number=models.IntegerField(null=True)
+    neighborhood=models.OneToOneField(Neighborhood,null=True)
+    
 
     def __str__(self):
         return self.first_name
