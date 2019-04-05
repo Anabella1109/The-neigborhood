@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from .forms import SignUpForm, Profileform, Postform
 from django.http  import HttpResponse,Http404,HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
-from .models import Profile, Post
+from .models import Profile, Post, Business, Police, Health
 from django.contrib.auth.models import User
 @login_required(login_url='/accounts/login/')
 def home(request):
@@ -11,7 +11,10 @@ def home(request):
     profile=Profile.objects.get(user=user)
     posts=Post.objects.all()
     neighbors=Profile.objects.filter(neighborhood=profile.neighborhood)
-    return render(request, 'home/home.html',{'posts':posts,'neighbors':neighbors,'profile':profile})
+    busis=Business.objects.filter(neighborhood=profile.neighborhood)
+    polls=Police.objects.filter(neighborhood=profile.neighborhood)
+    hosp=Health.objects.filter(neighborhood=profile.neighborhood)
+    return render(request, 'home/home.html',{'posts':posts,'neighbors':neighbors,'profile':profile,'biss':busis,'popos':polls,'hosps':hosp})
 
 
 

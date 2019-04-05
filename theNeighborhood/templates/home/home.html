@@ -13,7 +13,8 @@
 <h2 class="text-center">to <span>The neighborhood watch</span></h2>
 {%endif%}
 </div>
-
+<div style="border-bottom:2px solid black">
+  <h2>Posts by people around your neighborhood</h2>
  {%for post in posts %}
  {%if post.profile in neighbors %}
    <p>{{post.title}}</p>
@@ -31,6 +32,50 @@
 
 
  {%endfor%}
+</div>
+<div style="border-bottom:2px solid black; margin-top:5%;">
+ <h2>Businesses in {{profile.neighborhood}}</h2>
+ 
+ {%for business in biss%}
+ <div>
+ <p class="panel panel-heading">{{business.name}}</p>
+ <div class="panel panel-body">
+ <p>E-mail:{{business.email}}</p>
+<p>Exact location:{{business.location}}</p>
+<p>Phone number:0{{business.phone_number}}</p>
+</div>
+</div>
+ {%empty%}
+ <p>No businesses in {{profile.neighborhood}} yet</p>
+ {%endfor%}
+</div>
+ <div style="border-bottom:2px solid black; margin-top:5%;">
+ <h2>Police departements around in {{profile.neighborhood}}</h2>
+ {%for popo in popos %}
+ <p class="panel panel-heading">{{popo.name}}</p>
+ <div class="panel panel-body">
+<p>E-mail:{{popo.email}}</p>
+<p>Exact location:{{popo.location}}</p>
+<p>Phone number:0{{popo.phone_number}}</p>
+ </div>
+{%empty%}
+ <p>No Police stations around {{profile.neighborhood}} found</p>
+ {%endfor%}
+</div>
+
+<div style="border-bottom:2px solid black; margin-top:5%;"> 
+    <h2>Health centers around in {{profile.neighborhood}}</h2>
+    {%for hop in hosps %}
+    <p class="panel panel-heading">{{hop.name}}</p>
+    <div class="panel panel-body">
+   <p>E-mail:{{hop.email}}</p>
+   <p>Exact location:{{hop.location}}</p>
+   <p>Phone number:0{{hop.phone_number}}</p>
+   </div>
+   {%empty%}
+    <p>No Health centers around {{profile.neighborhood}} found</p>
+    {%endfor%}
+   </div>
 </div>
 
 {% endblock %}

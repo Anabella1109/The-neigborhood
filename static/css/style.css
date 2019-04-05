@@ -1,0 +1,7 @@
+.panel{
+  background-color: beige;
+  width: 50%;
+}
+.panel-heading{
+  background-color: rgb(247, 247, 201);
+}
