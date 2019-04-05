@@ -3,16 +3,17 @@
 {% block content %}
 {{block.super}}
 
+<div id="to" style="font-family: 'Cinzel', serif;background-color:#DE9E36;height: 20%;">
+    <h1 class="text-center">WELCOME</h1>
+    {% if profile.neighborhood %}
+    <h2 class="text-center">to <span>{{profile.neighborhood}} </span></h2>
+    <h3 class="text-center">With {{profile.neighborhood.occupants}} occupants</h3>
+    {%else%}
+    <h2 class="text-center">to <span>The neighborhood watch</span></h2>
+    {%endif%}
+    </div>
 <div class="container">
-<div id="to">
-<h1 class="text-center">WELCOME</h1>
-{% if profile.neighborhood %}
-<h2 class="text-center">to <span>{{profile.neighborhood}} </span></h2>
-<h3 class="text-center">With {{profile.neighborhood.occupants}} occupants</h3>
-{%else%}
-<h2 class="text-center">to <span>The neighborhood watch</span></h2>
-{%endif%}
-</div>
+
 <div style="border-bottom:2px solid black">
   <h2>Posts by people around your neighborhood</h2>
  {%for post in posts %}

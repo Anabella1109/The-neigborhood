@@ -5,3 +5,11 @@
 .panel-heading{
   background-color: rgb(247, 247, 201);
 }
+
+#dp{
+  width:140px;
+  height: 140px;
+  border-radius: 60%;
+  float:left;
+  border:1px solid black;
+}

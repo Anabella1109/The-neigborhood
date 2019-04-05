@@ -3,7 +3,11 @@
 
  {% block content %}
  {{block.super}}
- <div class="container">
+
+ <div style="font-family: 'Cinzel', serif;background-color:#DE9E36;height: 30%;">
+   <p class="text-center">{{user.username}}' profile</p>
+ </div>
+ <div class="container"  style="margin-top: 5%;">
 
 <div class="col-md-6">
   <img src="{{profile.photo.url}}" alt="" height='200' width='100' id='dp'>

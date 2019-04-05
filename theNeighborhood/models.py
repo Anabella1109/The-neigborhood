@@ -3,6 +3,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from tinymce.models import HTMLField
 from django.contrib.auth.models import User
+
 class Neighborhood(models.Model):
      name = models.CharField(max_length=100, null=True)
      location = models.CharField(max_length=100, null=True)
@@ -10,7 +11,29 @@ class Neighborhood(models.Model):
 
      def __str__(self):
         return self.name
+     @classmethod
+     def create_neighborhood(cls,name,loc,occupants):
+        neighborhood=Neighborhood(name=name,location=loc,occupants=occupants)
+        return neighborhood
+     
+     @classmethod
+     def find_neighborhood(cls,id):
+        neighborhood=cls.objects.get(id=id)
+        return neighborhood
 
+     def save_neighborhood(self):
+         self.save()
+
+     def delete_neighborhood(self):
+        self.delete()
+
+     def update_neighborhood(self,bio):
+         self.name=bio
+         self.save()
+
+     def update_occupants(self,num):
+         self.occupants=num
+         self.save()
 
 # class User(models.Model):
 #     full_name=models.CharField(max_length=150,null=True)
@@ -49,6 +72,11 @@ class Business(models.Model):
 
      def __str__(self):
         return self.name
+
+     @classmethod
+     def create_business(cls,name,loc,neib,email,phone):
+        business=Business(name=name,location=loc,neighborhood=neib,email=email,phone_number=phone)
+        return business
 
 class Health(models.Model):
     name=models.CharField(max_length=100,null=True)
