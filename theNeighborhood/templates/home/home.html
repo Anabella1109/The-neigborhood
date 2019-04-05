@@ -10,14 +10,16 @@
 </div>
 
  {%for post in posts %}
+ {%if post.profile in neighbors %}
    <p>{{post.title}}</p>
    <img src="{{post.image.url}}" alt="" height="300">
  
     {% autoescape on %}
     {{post.caption| safe}}
    {% endautoescape %}
+    
 
-  
+  {%endif%}
 
 
  {%endfor%}

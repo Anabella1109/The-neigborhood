@@ -7,8 +7,11 @@ from .models import Profile, Post
 from django.contrib.auth.models import User
 
 def home(request):
+    user=request.user
+    profile=Profile.objects.get(user=user)
     posts=Post.objects.all()
-    return render(request, 'home/home.html',{'posts':posts})
+    neighbors=Profile.objects.filter(neighborhood=profile.neighborhood)
+    return render(request, 'home/home.html',{'posts':posts,'neighbors':neighbors})
 
 
 
