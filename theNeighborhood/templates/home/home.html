@@ -9,22 +9,18 @@
 <h2 class="text-center">to <span> the</span></h2>
 </div>
 
- <!-- {%for proj in projects %}
+ {%for post in posts %}
+   <p>{{post.title}}</p>
+   <img src="{{post.image.url}}" alt="" height="300">
+ 
+    {% autoescape on %}
+    {{post.caption| safe}}
+   {% endautoescape %}
 
-   <div class="col-md-3" >
-     <div class="panel hh">
-    <div style="padding:4px;">
-   <p class="panel panel-heading">{{proj.name}}</p>
-   <div class="panel panel-body">
-  <a href="/project/{{proj.id}}" > <img src="{{proj.screenshot.url}}" alt="" height="250" id="img" ></a>
-   <p>{{proj.description}}</p>
-  </div>
-   <a href="/grade/{{proj.id}}" class="panel panel-footer"> <button>Grade</button> </a>
-  </div>
-  </div>
-</div>
+  
 
- {%endfor%} -->
+
+ {%endfor%}
 
 
 {% endblock %}

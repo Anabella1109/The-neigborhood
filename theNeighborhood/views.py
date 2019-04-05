@@ -7,7 +7,8 @@ from .models import Profile, Post
 from django.contrib.auth.models import User
 
 def home(request):
-    return render(request, 'home/home.html')
+    posts=Post.objects.all()
+    return render(request, 'home/home.html',{'posts':posts})
 
 
 
@@ -46,7 +47,7 @@ def profile(request,id):
      return render(request, 'profile.html',{"user":user,"profile": profile})
 
 @login_required(login_url='/accounts/login/')
-def new_project(request):
+def new_post(request):
     current_user = request.user
     profile = Profile.objects.get(user=current_user)
     if request.method == 'POST':
