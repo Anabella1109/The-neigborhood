@@ -8,7 +8,7 @@ urlpatterns=[
    
     url('^$',views.home,name='home'),
     # url(r'^signup/$', views.signup, name='signup'),
-    # url(r'^new/project$', views.new_project, name='new-project'),
+    url(r'^new/post$', views.new_post, name='new-post'),
     # url(r'^project/(\d+)',views.project,name ='project') ,
     # url(r'^like_home/(\d+)',views.like_home,name ='like1') ,
     # url(r'^like_post/(\d+)',views.like_post,name ='like2') ,

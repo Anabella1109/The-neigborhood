@@ -1,9 +1,9 @@
 from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect
-from .forms import SignUpForm, Profileform
+from .forms import SignUpForm, Profileform, Postform
 from django.http  import HttpResponse,Http404,HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
-from .models import Profile
+from .models import Profile, Post
 from django.contrib.auth.models import User
 
 def home(request):
@@ -44,6 +44,23 @@ def profile(request,id):
      
      
      return render(request, 'profile.html',{"user":user,"profile": profile})
+
+@login_required(login_url='/accounts/login/')
+def new_project(request):
+    current_user = request.user
+    profile = Profile.objects.get(user=current_user)
+    if request.method == 'POST':
+        form = Postform(request.POST, request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.user = current_user
+            post.profile=profile
+            post.save()
+        return redirect('home')
+
+    else:
+        form = Postform()
+    return render(request, 'new_post.html', {"form": form})
      
 
 
