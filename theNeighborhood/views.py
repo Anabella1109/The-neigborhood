@@ -5,13 +5,13 @@ from django.http  import HttpResponse,Http404,HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from .models import Profile, Post
 from django.contrib.auth.models import User
-
+@login_required(login_url='/accounts/login/')
 def home(request):
     user=request.user
     profile=Profile.objects.get(user=user)
     posts=Post.objects.all()
     neighbors=Profile.objects.filter(neighborhood=profile.neighborhood)
-    return render(request, 'home/home.html',{'posts':posts,'neighbors':neighbors})
+    return render(request, 'home/home.html',{'posts':posts,'neighbors':neighbors,'profile':profile})
 
 
 

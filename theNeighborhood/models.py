@@ -25,6 +25,7 @@ class Profile(models.Model):
     user=models.OneToOneField(User,on_delete=models.CASCADE,null=True)
     first_name=models.CharField(max_length=100,null=True)
     last_name=models.CharField(max_length=100,null=True)
+    location= models.CharField(max_length=100,null=True)
     phone_number=models.IntegerField(null=True)
     neighborhood=models.OneToOneField(Neighborhood,null=True)
     
@@ -41,8 +42,8 @@ def update_user_profile(sender, instance, created, **kwargs):
 class Business(models.Model):
      name=models.CharField(max_length=100,null=True)
      location=models.CharField(max_length=200,null=True)
-     neighborhood=models.OneToOneField(Neighborhood,null=True)
-     user=models.OneToOneField(User,on_delete=models.CASCADE,null=True)
+     neighborhood=models.ForeignKey(Neighborhood,null=True)
+     user=models.ForeignKey(User,on_delete=models.CASCADE,null=True)
      email = models.EmailField()
      phone_number=models.IntegerField(null=True)
 

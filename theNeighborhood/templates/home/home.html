@@ -3,10 +3,15 @@
 {% block content %}
 {{block.super}}
 
-
+<div class="container">
 <div id="to">
 <h1 class="text-center">WELCOME</h1>
-<h2 class="text-center">to <span> the</span></h2>
+{% if profile.neighborhood %}
+<h2 class="text-center">to <span>{{profile.neighborhood}} </span></h2>
+<h3 class="text-center">With {{profile.neighborhood.occupants}} occupants</h3>
+{%else%}
+<h2 class="text-center">to <span>The neighborhood watch</span></h2>
+{%endif%}
 </div>
 
  {%for post in posts %}
@@ -18,12 +23,15 @@
     {{post.caption| safe}}
    {% endautoescape %}
     
+  
+    <p>Posted {{post.pub_date|timesince}} by {{post.profile.first_name}}</p>
+ 
 
   {%endif%}
 
 
  {%endfor%}
-
+</div>
 
 {% endblock %}
 
